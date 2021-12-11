@@ -13,5 +13,14 @@ namespace atm
     /// </summary>
     public partial class App : Application
     {
+        public App()
+        {
+            //creation db
+
+            //using (var context = new MyContext())
+            //{
+            //    context.Database.CreateIfNotExists();
+        //}
+        }
     }
 }
