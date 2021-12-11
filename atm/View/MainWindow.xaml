@@ -5,9 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:atm"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="800" >
 
-    <StackPanel VerticalAlignment="Top" >
+    <StackPanel VerticalAlignment="Top" Background="Gainsboro">
 
         <Button Width="100" FontSize="20" Height="60" HorizontalAlignment="Left" >Insert Card</Button>
         <TextBox Width=" 350" Height=" 40" HorizontalAlignment="Left" ></TextBox>
