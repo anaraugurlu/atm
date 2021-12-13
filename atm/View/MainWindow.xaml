@@ -6,24 +6,19 @@
         xmlns:local="clr-namespace:atm"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800" >
-
     <StackPanel VerticalAlignment="Top" Background="GhostWhite">
-
         <Button Width="100" FontSize="20" Height="60" HorizontalAlignment="Left" Background="AliceBlue">Insert Card</Button>
-        <TextBox Width=" 350" Height=" 40" HorizontalAlignment="Left" Name="insertlbl"></TextBox>
+        <TextBox Width=" 350" Height=" 40" Visibility="Hidden"  HorizontalAlignment="Left" Name="insertlbl"></TextBox>
         <StackPanel Orientation="Horizontal" >
             <Button Width="100" FontSize="20" Height="60" HorizontalAlignment="Left" Background="AliceBlue" >Load data</Button>
-            <Label Width=" 200" Height=" 50" Background="AliceBlue" ></Label>
+            <Label Width=" 200" Height=" 50" Background="AliceBlue" Name="name"></Label>
         </StackPanel>
         <StackPanel >
-            <Label Width=" 200" Height=" 50" HorizontalAlignment="Left"  ></Label>
-            <TextBox Width=" 200" Height=" 50" HorizontalAlignment="Left" >
-                
+            <Label Width=" 200" Height=" 50" Visibility="Hidden" Name="balance" HorizontalAlignment="Left"  ></Label>
+            <TextBox Width=" 200"   Height=" 50" Name="transfer" HorizontalAlignment="Left" >
             </TextBox>
             <Button Width=" 200" Height=" 50 " Background="AliceBlue" HorizontalAlignment="Left" FontSize=" 20">Transfer Money</Button>
-            <Label Width=" 100" Height=" 100" Background="AliceBlue " Name="price"></Label>
+            <Label Width=" 100" Height=" 100" Visibility="Hidden"  Background="AliceBlue " Name="price"></Label>
         </StackPanel>
-    
     </StackPanel>
-
 </Window>
