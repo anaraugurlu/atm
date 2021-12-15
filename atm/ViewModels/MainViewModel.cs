@@ -1,5 +1,4 @@
 ﻿using atm.Commands;
-using at36666666m.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,27 +8,17 @@ using System.Windows;
 using atm.Repository;
 using System.Windows.Threading;
 using System.Threading;
-
 namespace atm.ViewModels
 {
- 
     public class MainViewModel : BaseViewModel
     {
-
-        public RelayCommand InsertButton { get; set; }
         public RelayCommand LoadDataButton { get; set; }
         public RelayCommand TransferMoneyButton { get; set; }
-        public RelayCommand NameLbl { get; set; }
-        public RelayCommand BalanceLbl { get; set; }
-        public MainWindow main { get; set; }
+        //public MainWindow main { get; set; }
         public static object obj = new object();
-
-        public RelayCommand PriceLbl { get; set; }
         DispatcherTimer dispatcher = new DispatcherTimer();
-
         public UserReppository  repository { get; set; }
         public User User { get; set; }
-
         public MainViewModel(MainWindow mainWindow) {
 
             Users = new List<User>();
@@ -37,40 +26,48 @@ namespace atm.ViewModels
             Users = repository.GetAll();
             TransferMoneyButton = new RelayCommand((sender) =>
             {
-
                 lock (obj)
                 {
                     dispatcher.Start();
-                    if (decimal.Parse(User.Balance.ToString()) >= decimal.Parse(main.transfer .Text))
+                    if (User.Balance >= decimal.Parse(mainWindow.transfer .Text))
                     {
+                        MessageBox.Show("Please wait for the operation to be performed");
                         Thread.Sleep(5000);
-                        User.Balance = (decimal.Parse(User.Balance.ToString()) - decimal.Parse(main.transfer .Text .ToString ()).ToString ();
-                        main.balance.Content = User.Balance;
+                        decimal price=User.Balance - decimal.Parse(mainWindow.transfer .Text );
+                        User.Balance = price;
+                        mainWindow.price .Content = User.Balance;
+                        MessageBox.Show("The money ransfer was successful");
                     }
                     else
                     {
-                        MessageBox.Show("Transfer Declined");
+                        MessageBox.Show("There is not enough money in the balance. The operation was not performed");
                     }
                 }
             });
-             InsertButton = new RelayCommand((sender) =>
-             {
-                 main.insertlbl  .Visibility = Visibility.Visible;
-             });
             LoadDataButton = new RelayCommand((sender) =>
             {
                 foreach (var item in Users)
                 {
-                    if (item.Number .ToString () == main.insertlbl .Text)
+                    if (item.Number .ToString () == mainWindow.insertlbl .Text)
                     {
-                        main.name .Content = item.Fullname ;
-                        main.balance.Content = item.Balance;
+
+                        mainWindow.name .Content = item.Fullname ;
+                        mainWindow.balance.Content = item.Balance;
                         User = item;
+                        mainWindow.price.Visibility = Visibility.Visible;
+                        mainWindow.price2.Visibility = Visibility.Visible;
+                        mainWindow.transfer2.Visibility = Visibility.Visible;
+                        mainWindow.transfer .Visibility = Visibility.Visible;
+                        mainWindow.cardnumber .Visibility = Visibility.Visible;
+                        return;
+                    }
+                    else
+                    {
+                        MessageBox.Show("This User is not available try again");
                     }
                 }
             });
         }
-
         private List<User> allUsers;
         public List<User> Users
         {
@@ -85,5 +82,3 @@ namespace atm.ViewModels
         }
         }
     }
-
-

@@ -23,8 +23,8 @@ namespace atm
     {
         public MainWindow()
         {
-            InitializeComponent();
-            this.DataContext = new MainViewModel(this);
+        InitializeComponent();
+        this.DataContext = new MainViewModel(this);
         }
     }
 }
